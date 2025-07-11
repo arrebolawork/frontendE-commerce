@@ -1,16 +1,14 @@
-
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
-import LoginForm from "./components/LoginForm";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css';
+import LoginForm from './components/login/LoginForm';
 function App() {
   return (
     <Router>
-      {/* <Header /> */}
+      {/* <Header /> */} <h1>Tiendita online</h1>
       <main>
-        <h1>Tiendita online</h1>
         <Routes>
-          {/* <Route path='/' element={<HomeView />} />
-          <Route path='/home' element={<HomeView />} />
+          <Route path="/" element={<LoginForm />} />
+          {/* <Route path='/home' element={<HomeView />} />
           <Route path='/login' element={<LoginView />} />
           <Route path='/register' element={<RegisterView />} />
           <Route path='/profile' element={<ProfileView />} />
