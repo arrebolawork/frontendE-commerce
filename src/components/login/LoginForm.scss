@@ -33,3 +33,13 @@
   padding: 1rem;
   width: 100%;
 }
+.estadoRegisto {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: opacity 0.9s ease, height 0.9s ease; /* Aplicar transición */
+}
+.estadoRegisto.visible {
+  opacity: 1;
+  height: auto;
+}
