@@ -1,11 +1,15 @@
-// import UserContext from './context/UserContext'
+import { UserContext } from '../../context/UserContext'
+import { useEffect } from 'react'
 import { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './Header.scss'
 
+import UserMenu from './UserMenu.jsx'
 
 const Header = () => {
-    const [cartEmpty,setCartEmpty] = useState(true) // default a cart.length == 0
+    const { cart } = useContext(UserContext)
+    const [cartEmpty,setCartEmpty] = useState(!cart || cart.length == 0)
+    const [showMenu,setShowMenu] = useState(false)
 
     const navigate = useNavigate()
 
@@ -26,8 +30,9 @@ const Header = () => {
             <Link to='/cart' className='header-button icon-cart'>
                 <span className={cartEmpty ? null:'notification'}></span>
             </Link>
-            <button className='header-button icon-user'>
+            <button className='header-button icon-user' onClick={() => {setShowMenu(true)}}>
                 <span className=''></span>
+                {showMenu ? <UserMenu />:null}
             </button>
         </header>
     )
