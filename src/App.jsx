@@ -2,6 +2,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import LoginForm from "./components/LoginForm";
+import ShopView from "./pages/ShopView/ShopView";
 function App() {
   return (
     <Router>
@@ -9,6 +10,7 @@ function App() {
       <main>
         <h1>Tiendita online</h1>
         <Routes>
+          <Route path='/shop' element={<ShopView />} />
           {/* <Route path='/' element={<HomeView />} />
           <Route path='/home' element={<HomeView />} />
           <Route path='/login' element={<LoginView />} />
