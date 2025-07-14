@@ -1,108 +1,106 @@
 .header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background-color: #fff;
+  box-shadow: 0px 3px 2px #aaa;
+  font-size: 28px;
+  padding: 12px;
+  width: 100%;
+  color: #000;
+
+  .search-form {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
-    background-color: #fff;
-    box-shadow: 0px 3px 2px #aaa;
-    font-size: 28px;
-    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #000;
+    padding: 15px;
+    flex-grow: 0.25;
+    max-width: 500px;
 
+    input {
+      color: #656565;
+      border: none;
+      font-size: inherit;
+      outline: none;
+      background-color: transparent;
+    }
+
+    .search-button {
+      background-image: url('/icons/search.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      min-width: 25px;
+      aspect-ratio: 1;
+      background-color: transparent;
+      border: 0px;
+      cursor: pointer;
+    }
+  }
+
+  & > a {
+    padding: 20px;
     color: #000;
+  }
 
-    .search-form {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        border-radius: 10px;
-        border: 1px solid #000;
-        padding: 15px;
-        flex-grow: 0.25;
-        max-width: 500px;
+  .header-button {
+    border-radius: 20px;
+    background-color: #d9d9d9;
+    min-width: 80px;
+    border: 0px;
+    cursor: pointer;
+    aspect-ratio: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
 
-        input {
-            color: #656565;
-            border: none;
-            font-size: inherit;
-            outline: none;
-            background-color: transparent;
-        }
-
-        .search-button {
-            background-image: url("/icons/search.svg");
-            background-repeat: no-repeat;
-            background-position: center;
-            min-width: 25px;
-            aspect-ratio: 1;
-            background-color: transparent;
-            border: 0px;
-            cursor: pointer;
-        }
+    .notification {
+      min-width: 16px;
+      aspect-ratio: 1;
+      display: block;
+      position: absolute;
+      background-color: #ff6001;
+      border-radius: 8px;
+      top: 20px;
+      right: 20px;
     }
+  }
 
-    &>a {
-        padding: 20px;
-        color: #000;
+  .icon-cart {
+    background-image: url('/icons/shoppingcart.svg');
+  }
+  .icon-user {
+    background-image: url('/icons/user.svg');
+  }
+  #user-menu {
+    position: absolute;
+    background-color: #efefef;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    top: 90px;
+    right: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: max-content;
+    gap: 10px;
+    cursor: default;
+    font-size: 20px;
+
+    a,
+    button {
+      padding: 18px;
+      background-color: #fff;
+      width: -moz-available;
+      width: -webkit-fill-available;
+      width: fill-available;
+      border-radius: 14px;
+      cursor: pointer;
     }
-
-    .header-button {
-        border-radius: 20px;
-        background-color: #d9d9d9;
-        min-width: 80px;
-        border: 0px;
-        cursor: pointer;
-        aspect-ratio: 1;
-        background-position: center;
-        background-repeat: no-repeat;
-        position: relative;
-
-        .notification {
-            min-width: 16px;
-            aspect-ratio: 1;
-            display: block;
-            position: absolute;
-            background-color: #FF6001;
-            border-radius: 8px;
-            top: 20px;
-            right: 20px;
-        }
-    }
-
-    .icon-cart { background-image: url("/icons/shoppingcart.svg"); }
-    .icon-user { background-image: url("/icons/user.svg"); }
-        #user-menu {
-            position: absolute;
-            background-color: #efefef;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            padding: 15px;
-            top: 90px;
-            right: 0px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: max-content;
-            gap: 10px;
-            cursor: default;
-            font-size: 20px;
-    
-            a {
-                padding: 18px;
-                background-color: #fff;
-                width: -moz-available;
-                width: -webkit-fill-available;
-                width: fill-available;
-                border-radius: 14px;
-            }
-        }
-}
-
-#root {
-    background-color: #fff;
-}
-
-* {
-    text-decoration: none;
+  }
 }
