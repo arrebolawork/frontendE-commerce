@@ -33,13 +33,13 @@
   padding: 1rem;
   width: 100%;
 }
-.estadoRegisto {
-  opacity: 0;
-  height: 0;
-  overflow: hidden;
-  transition: opacity 0.9s ease, height 0.9s ease; /* Aplicar transición */
-}
-.estadoRegisto.visible {
-  opacity: 1;
-  height: auto;
-}
+// .estadoRegisto {
+//   opacity: 0;
+//   height: 0;
+//   overflow: hidden;
+//   transition: opacity 1.7s ease, height 1.7s ease, transform 1.7s ease;
+// }
+// .estadoRegisto.visible {
+//   opacity: 1;
+//   height: 110px;
+// }

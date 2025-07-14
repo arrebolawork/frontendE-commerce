@@ -1,29 +1,41 @@
 import { useContext, useState } from 'react';
 import { UserContext } from '../../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 import './LoginForm.scss';
 
 export default function LoginForm() {
   const { login } = useContext(UserContext);
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [passwd, setPasswd] = useState('');
   const [nombre, setNombre] = useState('');
   const [apellidos, setApellidos] = useState('');
   const [cumple, setCumple] = useState('');
-  const [haveCount, setHaveCount] = useState(false);
+  const [haveCount, setHaveCount] = useState(true);
+  const REGEX = /^[a-zA-Z0-9._%+-ñÑ]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const handleSubmit = (e) => {
     e.preventDefault();
-    login(email, passwd);
+    if (haveCount) {
+      if (email.trim() === '' || !REGEX.test(email.trim())) {
+        console.log(email);
+        return console.log('mostrar mensaje de que el mail no cumple los standars');
+      }
+      if (passwd.trim() === '') return console.log('mostrar mensaje de que el campo de la contraseña está vacio');
+      login(email.trim(), passwd.trim());
+      setEmail('');
+      setPasswd('');
+      navigate('/home');
+    }
   };
   const handleHaveCount = () => {
     setHaveCount((prev) => !prev);
-    console.log('ha cambiado');
   };
   return (
     <div>
       <form onSubmit={handleSubmit} className="formularioContainer">
         {!haveCount && (
           <>
-            <div className={`inputContainer estadoRegisto ${!haveCount ? 'visible' : ''}`}>
+            <div className={`inputContainer estadoRegisto ${haveCount ? '' : 'visible'}`}>
               <label htmlFor="nombre">Nombre</label>
               <input
                 type="text"
@@ -33,7 +45,7 @@ export default function LoginForm() {
                 required
               />
             </div>
-            <div className={`inputContainer estadoRegisto ${!haveCount ? 'visible' : ''}`}>
+            <div className={`inputContainer estadoRegisto ${haveCount ? '' : 'visible'}`}>
               <label htmlFor="apellidos">Apellidos</label>
               <input
                 type="text"
@@ -43,7 +55,7 @@ export default function LoginForm() {
                 required
               />
             </div>
-            <div className={`inputContainer estadoRegisto ${!haveCount ? 'visible' : ''}`}>
+            <div className={`inputContainer estadoRegisto ${haveCount ? '' : 'visible'}`}>
               <label htmlFor="cumpleaños">Cumpleaños</label>
               <input type="date" value={cumple} onChange={(e) => setCumple(e.target.value)} required />
             </div>
