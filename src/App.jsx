@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import LoginForm from './components/LoginForm';
+import LoginForm from './components/login/LoginForm.jsx';
 import Header from './components/header/Header.jsx';
 
 function App() {
@@ -9,16 +9,17 @@ function App() {
       <Header />
       <main>
         <Routes>
-          <Route path="/" element={<LoginForm />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/register" element={<LoginForm />} />
           {/* <Route path='/home' element={<HomeView />} />
           <Route path='/login' element={<LoginView />} />
-          <Route path='/register' element={<RegisterView />} />
           <Route path='/profile' element={<ProfileView />} />
           <Route path='/search' element={<SearchView />} />
           <Route path='/cart' element={<CartView />} /> */}
         </Routes>
       </main>
       {/* <Footer /> */}
+      <div></div>
     </Router>
   );
 }

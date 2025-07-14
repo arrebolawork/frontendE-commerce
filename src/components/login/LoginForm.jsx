@@ -1,11 +1,12 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../context/UserContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './LoginForm.scss';
 
 export default function LoginForm() {
   const { login } = useContext(UserContext);
   const navigate = useNavigate();
+  const location = useLocation();
   const [email, setEmail] = useState('');
   const [passwd, setPasswd] = useState('');
   const [nombre, setNombre] = useState('');
@@ -30,6 +31,13 @@ export default function LoginForm() {
   const handleHaveCount = () => {
     setHaveCount((prev) => !prev);
   };
+  useEffect(() => {
+    if (location.pathname === '/register') {
+      setHaveCount(false);
+    } else {
+      setHaveCount(true);
+    }
+  }, [location]);
   return (
     <div>
       <form onSubmit={handleSubmit} className="formularioContainer">
@@ -81,7 +89,9 @@ export default function LoginForm() {
           {haveCount ? 'Inicia Sesión' : 'Registrate'}
         </button>
       </form>
-      <button onClick={handleHaveCount}>{haveCount ? 'Registrate' : 'Tengo cuenta'}</button>
+      <button onClick={handleHaveCount} className="regiterButton">
+        {haveCount ? 'Registrate' : 'Tengo cuenta'}
+      </button>
     </div>
   );
 }
