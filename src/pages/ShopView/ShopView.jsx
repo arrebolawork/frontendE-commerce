@@ -1,13 +1,7 @@
-import React from 'react'
-import ProductList from '../../components/ProductList/ProductList'
-
+import ProductList from '../../components/ProductList/ProductList';
 
 const ShopView = () => {
-  return (
-    <>
-    <ProductList/>
-    </>
-  )
-}
+  return <ProductList />;
+};
 
-export default ShopView
+export default ShopView;

@@ -4,8 +4,6 @@ import { useState, useEffect } from 'react';
 
 const API_URL = 'http://localhost:3000';
 
-const API_URL = 'http://localhost:3000'
-
 export const UserProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
   const [user, setUser] = useState(null);

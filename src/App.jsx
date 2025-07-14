@@ -1,8 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
-import ShopView from "./pages/ShopView/ShopView";
-import LoginForm from "./components/LoginForm";
-import Header from './components/header/Header.jsx'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css';
+import ShopView from './pages/ShopView/ShopView';
+import LoginForm from './components/login/LoginForm';
+import Header from './components/header/Header.jsx';
 
 function App() {
   return (
@@ -12,8 +12,8 @@ function App() {
         <Routes>
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<LoginForm />} />
+          <Route path="/shop" element={<ShopView />} />
           {/* <Route path='/home' element={<HomeView />} />
-          <Route path='/shop' element={<ShopView />} />
           {/* <Route path='/' element={<HomeView />} />
           <Route path='/home' element={<HomeView />} />
           <Route path='/login' element={<LoginView />} />
