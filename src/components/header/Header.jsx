@@ -8,8 +8,12 @@ import UserMenu from './UserMenu.jsx'
 
 const Header = () => {
     const { cart } = useContext(UserContext)
-    const [cartEmpty,setCartEmpty] = useState(!cart || cart.length == 0)
+    const [cartEmpty,setCartEmpty] = useState(!cart || cart.size == 0)
     const [showMenu,setShowMenu] = useState(false)
+
+    useEffect(() => {
+        setCartEmpty(!cart || cart.size == 0)
+    }, [cart])
 
     const navigate = useNavigate()
 

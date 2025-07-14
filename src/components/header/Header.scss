@@ -27,6 +27,7 @@
             border: none;
             font-size: inherit;
             outline: none;
+            background-color: transparent;
         }
 
         .search-button {
@@ -85,6 +86,7 @@
             width: max-content;
             gap: 10px;
             cursor: default;
+            font-size: 20px;
     
             a {
                 padding: 18px;
@@ -93,7 +95,6 @@
                 width: -webkit-fill-available;
                 width: fill-available;
                 border-radius: 14px;
-                font-size: 20px;
             }
         }
 }
