@@ -1,12 +1,14 @@
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import LoginForm from "./components/LoginForm";
 import ShopView from "./pages/ShopView/ShopView";
+import LoginForm from "./components/LoginForm";
+import Header from './components/header/Header.jsx'
+
 function App() {
   return (
     <Router>
-      {/* <Header /> */}
+      <Header />
       <main>
         <h1>Tiendita online</h1>
         <Routes>
