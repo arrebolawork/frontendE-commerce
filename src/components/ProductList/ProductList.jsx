@@ -1,21 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useContext } from 'react'
 import './ProductList.scss'
+import { ProductContext } from '../../context/ProductContext'
 
 const ProductList = () => {
-    const [products, setProducts] = useState([])
-
-    const getAllProducts = async () => {
-        try {
-            const res = await axios.get("http://localhost:3000/product/sortedDesc");
-            setProducts(res.data.products)
-        } catch (error) {
-        }
-    }
-    useEffect(() => {
-        getAllProducts()
-
-    }, [])
+const {products} = useContext(ProductContext)
 
 
 
