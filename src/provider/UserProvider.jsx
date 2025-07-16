@@ -1,11 +1,11 @@
-import axios from "axios";
-import { UserContext } from "../context/UserContext";
-import { useState, useEffect } from "react";
+import axios from 'axios';
+import { UserContext } from '../context/UserContext';
+import { useState, useEffect } from 'react';
 
-const API_URL = 'http://localhost:3000'
+const API_URL = 'http://localhost:3000';
 
 export const UserProvider = ({ children }) => {
-  const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const [token, setToken] = useState(localStorage.getItem('token') || '');
   const [user, setUser] = useState(null);
   const [cart, setCart] = useState(
     new Map(JSON.parse(localStorage.getItem('cart')) ?? []),
@@ -41,10 +41,10 @@ export const UserProvider = ({ children }) => {
     setToken('');
   };
 
-  const addProductToCart = (product, quantity = 1) => {
+  const addProductToCart = (productid, quantity = 1) => {
     const newCart = new Map(cart);
-    let currentQuantity = newCart.get(product.id) ?? 0;
-    newCart.set(product.id, currentQuantity + quantity);
+    let currentQuantity = newCart.get(productid) ?? 0;
+    newCart.set(productid, currentQuantity + quantity);
     setCart(newCart);
     localStorage.setItem('cart', JSON.stringify(newCart.entries().toArray()));
   };

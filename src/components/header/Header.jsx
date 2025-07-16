@@ -40,7 +40,6 @@ const Header = () => {
             setShowMenu(true);
           }}
         >
-          <span className=""></span>
           {showMenu ? <UserMenu /> : null}
         </button>
       </header>
