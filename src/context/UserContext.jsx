@@ -5,4 +5,5 @@ export const UserContext = createContext({
   setUser: () => {},
   login: () => {},
   logout: () => {},
+  cart: new Map(),
 });
