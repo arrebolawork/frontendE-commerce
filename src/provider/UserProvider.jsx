@@ -63,7 +63,7 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, token, login, logout, cart, addProductToCart, emptyCart }}>
+    <UserContext.Provider value={{ user, token, login, logout, cart, addProductToCart, emptyCart, register }}>
       {children}
     </UserContext.Provider>
   );
