@@ -2,7 +2,7 @@ import axios from 'axios';
 import { UserContext } from '../context/UserContext';
 import { useState, useEffect } from 'react';
 
-const API_URL = 'http://localhost:3000';
+import { API_URL } from '../config';
 
 export const UserProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
@@ -47,8 +47,15 @@ export const UserProvider = ({ children }) => {
 
   const addProductToCart = (productid, quantity = 1) => {
     const newCart = new Map(cart);
-    let currentQuantity = newCart.get(productid) ?? 0;
-    newCart.set(productid, currentQuantity + quantity);
+    let newQuantity = Math.max(0, (newCart.get(productid) ?? 0) + quantity);
+    newCart.set(productid, newQuantity);
+    setCart(newCart);
+    localStorage.setItem('cart', JSON.stringify(newCart.entries().toArray()));
+  };
+
+  const removeProductFromCart = (productId) => {
+    const newCart = new Map(cart);
+    newCart.delete(productId);
     setCart(newCart);
     localStorage.setItem('cart', JSON.stringify(newCart.entries().toArray()));
   };
@@ -64,7 +71,18 @@ export const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ user, token, login, logout, cart, addProductToCart, emptyCart, register, fetchProfile }}
+      value={{
+        user,
+        token,
+        login,
+        logout,
+        cart,
+        addProductToCart,
+        removeProductFromCart,
+        emptyCart,
+        register,
+        fetchProfile,
+      }}
     >
       {children}
     </UserContext.Provider>

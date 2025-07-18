@@ -1,0 +1,52 @@
+.cartProduct {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    width: 60ch;
+
+    &:not(:last-child) {
+        border-bottom: 1px solid #555;
+    }
+
+    .name {
+        flex-grow: 3;
+        text-align: left;
+        align-self: flex-start;
+        margin-top: 1rem;
+    }
+
+    img {
+        height: 120px;
+    }
+
+    input {
+        padding: 5px 5px;
+        border-radius: 10px;
+        border: 1px solid #000;
+        max-width: 120px;
+    }
+
+    &>div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 5px;
+    }
+
+    button {
+        background-image: url('/icons/trash.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        width: 30px;
+        aspect-ratio: 1;
+        border-radius: 5px;
+        border: 0px;
+        cursor: pointer;
+        background-color: #ccc;
+
+        align-self: flex-start;
+    }
+}

@@ -1,0 +1,35 @@
+.cartView {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 30px;
+
+    .cartProducts {
+        border: 1px solid #555;
+        border-radius: 20px;
+    }
+
+    .checkout {
+        border: 1px solid #555;
+        border-radius: 20px;
+        padding: 10px;
+        width: 20ch;
+
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        p {
+            font-size: 15px;
+        }
+
+        .button {
+            padding: 5px 15px;
+            background-color: #ccc;
+            border-radius: 10px;
+            border: 0px;
+            cursor: pointer;
+        }
+    }
+}

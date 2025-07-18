@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import ShopView from './pages/ShopView/ShopView';
+import CartView from './pages/CartView/CartView';
 import LoginForm from './components/login/LoginForm';
 import Header from './components/header/Header.jsx';
 import Profile from './components/Profile/Profile.jsx';
@@ -14,6 +15,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<LoginForm />} />
           <Route path="/shop" element={<ShopView />} />
+          <Route path="/cart" element={<CartView />} />
           <Route path="/profile" element={<Profile />} />
           {/* <Route path='/home' element={<HomeView />} />
           {/* <Route path='/' element={<HomeView />} />
