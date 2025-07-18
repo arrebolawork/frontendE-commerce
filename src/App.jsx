@@ -3,6 +3,7 @@ import './App.css';
 import ShopView from './pages/ShopView/ShopView';
 import LoginForm from './components/login/LoginForm';
 import Header from './components/header/Header.jsx';
+import Profile from './components/Profile/Profile.jsx';
 
 function App() {
   return (
@@ -13,11 +14,11 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<LoginForm />} />
           <Route path="/shop" element={<ShopView />} />
+          <Route path="/profile" element={<Profile />} />
           {/* <Route path='/home' element={<HomeView />} />
           {/* <Route path='/' element={<HomeView />} />
           <Route path='/home' element={<HomeView />} />
           <Route path='/login' element={<LoginView />} />
-          <Route path='/profile' element={<ProfileView />} />
           <Route path='/search' element={<SearchView />} />
           <Route path='/cart' element={<CartView />} /> */}
         </Routes>

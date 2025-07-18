@@ -36,7 +36,7 @@ const Header = () => {
       <button
         className="header-button icon-user"
         onClick={() => {
-          setShowMenu(true);
+          setShowMenu(!showMenu);
         }}
       >
         {showMenu ? <UserMenu /> : null}
