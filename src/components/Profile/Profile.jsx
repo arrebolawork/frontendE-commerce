@@ -21,16 +21,16 @@ export default function Profile() {
     <div className="perfilContainer">
       <div className="profileData">
         <label>
-          Nombre :<strong>{profileUser.name}</strong>
+          Nombre : <strong>{profileUser.name}</strong>
         </label>
         <label>
-          Apellidos :<strong>{profileUser.lastName}</strong>
+          Apellidos : <strong>{profileUser.lastName}</strong>
         </label>
         <label>
-          Cumpleaños :<strong>{profileUser.birthday}</strong>
+          Cumpleaños : <strong>{profileUser.birthday.split('T')[0]}</strong>
         </label>
         <label>
-          Email :<strong>{profileUser.email}</strong>
+          Email : <strong>{profileUser.email}</strong>
         </label>
       </div>
     </div>
