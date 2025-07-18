@@ -8,3 +8,22 @@
   align-items: center;
   justify-content: space-between;
 }
+.userMessageR {
+  position: absolute;
+  top: 1px;
+  right: 100px;
+  background-color: rgb(250, 109, 109);
+  padding: 2rem;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 5px 10px 5px rgb(255, 184, 184);
+}
+.userMessageG {
+  position: absolute;
+  top: 1px;
+  right: 100px;
+  background-color: rgb(142, 250, 109);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 5px 10px 5px rgb(218, 255, 184);
+}

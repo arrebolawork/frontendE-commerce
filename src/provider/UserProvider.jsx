@@ -19,7 +19,13 @@ export const UserProvider = ({ children }) => {
       console.error('Error en login:', error.response?.data || error);
     }
   };
-
+  const register = async ({ name, lastName, email, passwd, birthday }) => {
+    try {
+      await axios.post(`${API_URL}/user/register`, { name, lastName, email, passwd, birthday });
+    } catch (error) {
+      console.error('Error en Register:', error.response?.data || error);
+    }
+  };
   const fetchProfile = async (authToken = token) => {
     try {
       const res = await axios.get(`${API_URL}/user/me`, {
@@ -42,5 +48,5 @@ export const UserProvider = ({ children }) => {
     if (token) fetchProfile();
   }, []);
 
-  return <UserContext.Provider value={{ user, token, login, logout }}>{children}</UserContext.Provider>;
+  return <UserContext.Provider value={{ user, token, login, logout, register }}>{children}</UserContext.Provider>;
 };

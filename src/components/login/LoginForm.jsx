@@ -2,9 +2,12 @@ import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../context/UserContext';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './LoginForm.scss';
+import useMensajeUsuario from '../../hook/useMensajeUsuario';
+import MensajeUsuario from '../Alertas/MensajeUsuario';
 
 export default function LoginForm() {
-  const { login } = useContext(UserContext);
+  const { visible, mensaje, mostrarMensaje } = useMensajeUsuario();
+  const { login, register } = useContext(UserContext);
   const navigate = useNavigate();
   const location = useLocation();
   const [email, setEmail] = useState('');
@@ -14,18 +17,42 @@ export default function LoginForm() {
   const [cumple, setCumple] = useState('');
   const [haveCount, setHaveCount] = useState(true);
   const REGEX = /^[a-zA-Z0-9._%+-ñÑ]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  const resetForm = () => {
+    setEmail('');
+    setPasswd('');
+    setNombre('');
+    setApellidos('');
+    setCumple('');
+
+    navigate('/shop');
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (email.trim() === '' || !REGEX.test(email.trim())) {
+      return mostrarMensaje('Email vacío o no cumple con los estándares', 'error');
+    }
+    if (passwd.trim() === '') {
+      return mostrarMensaje('La Contraseña está vacía', 'error');
+    }
+
     if (haveCount) {
-      if (email.trim() === '' || !REGEX.test(email.trim())) {
-        console.log(email);
-        return console.log('mostrar mensaje de que el mail no cumple los standars');
-      }
-      if (passwd.trim() === '') return console.log('mostrar mensaje de que el campo de la contraseña está vacio');
       login(email.trim(), passwd.trim());
-      setEmail('');
-      setPasswd('');
-      navigate('/home');
+      resetForm();
+    } else {
+      if (nombre.trim() === '') return mostrarMensaje('Debes rellenar el nombre', 'error');
+      if (apellidos.trim() === '') return mostrarMensaje('Deber rellenar los apellidos', 'error');
+
+      const newUser = {
+        name: nombre.trim(),
+        lastName: apellidos.trim(),
+        email: email.trim(),
+        passwd: passwd.trim(),
+        birthday: cumple ?? '',
+      };
+      register(newUser);
+      resetForm();
     }
   };
   const handleHaveCount = () => {
@@ -40,18 +67,13 @@ export default function LoginForm() {
   }, [location]);
   return (
     <div>
+      {visible && <MensajeUsuario mensaje={mensaje} tipo={'error'} />}
       <form onSubmit={handleSubmit} className="formularioContainer">
         {!haveCount && (
           <>
             <div className={`inputContainer estadoRegisto ${haveCount ? '' : 'visible'}`}>
               <label htmlFor="nombre">Nombre</label>
-              <input
-                type="text"
-                value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
-                placeholder="Nombre"
-                required
-              />
+              <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} placeholder="Nombre" />
             </div>
             <div className={`inputContainer estadoRegisto ${haveCount ? '' : 'visible'}`}>
               <label htmlFor="apellidos">Apellidos</label>
@@ -60,28 +82,21 @@ export default function LoginForm() {
                 value={apellidos}
                 onChange={(e) => setApellidos(e.target.value)}
                 placeholder="Apellidos"
-                required
               />
             </div>
             <div className={`inputContainer estadoRegisto ${haveCount ? '' : 'visible'}`}>
               <label htmlFor="cumpleaños">Cumpleaños</label>
-              <input type="date" value={cumple} onChange={(e) => setCumple(e.target.value)} required />
+              <input type="date" value={cumple} onChange={(e) => setCumple(e.target.value)} />
             </div>
           </>
         )}
         <div className="inputContainer">
           <label htmlFor="email">Email</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
         </div>
         <div className="inputContainer">
           <label htmlFor="passwd">Password</label>
-          <input
-            type="password"
-            value={passwd}
-            onChange={(e) => setPasswd(e.target.value)}
-            placeholder="Contraseña"
-            required
-          />
+          <input type="password" value={passwd} onChange={(e) => setPasswd(e.target.value)} placeholder="Contraseña" />
         </div>
 
         <button type="submit" className="submitButton">
