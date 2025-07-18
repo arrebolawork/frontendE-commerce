@@ -7,7 +7,7 @@ import './Header.scss';
 import UserMenu from './UserMenu.jsx';
 
 const Header = () => {
-  const { cart } = useContext(UserContext);
+  const { cart, addProductToCart, emptyCart } = useContext(UserContext);
   const [cartEmpty, setCartEmpty] = useState(!cart || cart.size == 0);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -40,7 +40,6 @@ const Header = () => {
           setShowMenu(true);
         }}
       >
-        <span className=""></span>
         {showMenu ? <UserMenu /> : null}
       </button>
     </header>

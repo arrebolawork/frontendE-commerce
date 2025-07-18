@@ -7,6 +7,7 @@ const API_URL = 'http://localhost:3000';
 export const UserProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
   const [user, setUser] = useState(null);
+  const [cart, setCart] = useState(new Map(JSON.parse(localStorage.getItem('cart')) ?? []));
 
   const login = async (email, passwd) => {
     try {
@@ -44,9 +45,26 @@ export const UserProvider = ({ children }) => {
     setToken('');
   };
 
+  const addProductToCart = (productid, quantity = 1) => {
+    const newCart = new Map(cart);
+    let currentQuantity = newCart.get(productid) ?? 0;
+    newCart.set(productid, currentQuantity + quantity);
+    setCart(newCart);
+    localStorage.setItem('cart', JSON.stringify(newCart.entries().toArray()));
+  };
+
+  const emptyCart = () => {
+    setCart(new Map());
+    localStorage.removeItem('cart');
+  };
+
   useEffect(() => {
     if (token) fetchProfile();
   }, []);
 
-  return <UserContext.Provider value={{ user, token, login, logout, register }}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider value={{ user, token, login, logout, cart, addProductToCart, emptyCart }}>
+      {children}
+    </UserContext.Provider>
+  );
 };

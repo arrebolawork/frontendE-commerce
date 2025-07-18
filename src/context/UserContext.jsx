@@ -6,4 +6,5 @@ export const UserContext = createContext({
   login: () => {},
   logout: () => {},
   register: () => {},
+  cart: new Map(),
 });
