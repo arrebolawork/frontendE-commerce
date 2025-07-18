@@ -39,7 +39,7 @@ export default function LoginForm() {
     }
   }, [location]);
   return (
-    <div>
+    <div className='loginPage'>
       <form onSubmit={handleSubmit} className="formularioContainer">
         {!haveCount && (
           <>
