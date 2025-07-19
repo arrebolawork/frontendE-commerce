@@ -26,9 +26,13 @@ export default function Profile() {
         <label>
           Apellidos : <strong>{profileUser.lastName}</strong>
         </label>
-        <label>
-          Cumpleaños : <strong>{profileUser.birthday.split('T')[0]}</strong>
-        </label>
+        {profileUser.birthday && (
+          <>
+            <label>
+              Cumpleaños : <strong>{profileUser.birthday.split('T')[0]}</strong>
+            </label>
+          </>
+        )}
         <label>
           Email : <strong>{profileUser.email}</strong>
         </label>
