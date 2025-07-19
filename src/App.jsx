@@ -4,6 +4,7 @@ import ShopView from './pages/ShopView/ShopView';
 import CartView from './pages/CartView/CartView';
 import LoginForm from './components/login/LoginForm';
 import Header from './components/header/Header.jsx';
+import Footer from './components/footer/Footer.jsx';
 import Profile from './components/Profile/Profile.jsx';
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
           <Route path='/cart' element={<CartView />} /> */}
         </Routes>
       </main>
-      {/* <Footer /> */}
+      <Footer />
       <div></div>
     </Router>
   );
