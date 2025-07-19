@@ -60,6 +60,13 @@ export const UserProvider = ({ children }) => {
     localStorage.setItem('cart', JSON.stringify(newCart.entries().toArray()));
   };
 
+  const removeProductFromCart = (productId) => {
+    const newCart = new Map(cart);
+    newCart.delete(productId);
+    setCart(newCart);
+    localStorage.setItem('cart', JSON.stringify(newCart.entries().toArray()));
+  }
+
   const emptyCart = () => {
     setCart(new Map());
     localStorage.removeItem('cart');
@@ -83,6 +90,7 @@ export const UserProvider = ({ children }) => {
         register,
         fetchProfile,
       }}
+      value={{ user, token, login, logout, cart, addProductToCart, removeProductFromCart, emptyCart }}
     >
       {children}
     </UserContext.Provider>

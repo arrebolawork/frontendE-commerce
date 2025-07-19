@@ -2,13 +2,13 @@ import { UserContext } from '../../context/UserContext';
 import { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Header.scss';
-
 import UserMenu from './UserMenu.jsx';
 
 const Header = () => {
   const { cart } = useContext(UserContext);
   const [cartEmpty, setCartEmpty] = useState(!cart || cart.size == 0);
   const [showMenu, setShowMenu] = useState(false);
+
 
   useEffect(() => {
     setCartEmpty(!cart || cart.size == 0);
