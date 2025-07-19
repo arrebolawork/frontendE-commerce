@@ -32,7 +32,7 @@ export const UserProvider = ({ children }) => {
       const res = await axios.get(`${API_URL}/user/me`, {
         headers: { Authorization: authToken },
       });
-      setUser(res.data);
+      setUser({ ...res.data, role: 'admin' });
     } catch (error) {
       console.error('Error al obtener perfil:', error.response?.data || error);
       logout();

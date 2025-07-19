@@ -18,7 +18,7 @@ export const ProductProvider = ({ children }) => {
 
   const createProduct = async (productData) => {
     try {
-      const token = JSON.parse(localStorage.getItem('token'));
+      const token = localStorage.getItem('token');
       const res = await axios.post(
         `${API_URL}/product`,
         {
@@ -50,7 +50,7 @@ export const ProductProvider = ({ children }) => {
 
   const deleteProduct = async (id) => {
     try {
-      const token = JSON.parse(localStorage.getItem('token'));
+      const token = localStorage.getItem('token');
       await axios.delete(`${API_URL}/product/${id}`, {
         headers: { authorization: token },
       });
@@ -62,7 +62,7 @@ export const ProductProvider = ({ children }) => {
 
   const updateProduct = async (id, productData) => {
     try {
-      const token = JSON.parse(localStorage.getItem('token'));
+      const token = localStorage.getItem('token');
       const res = await axios.put(`${API_URL}/product/${id}`, productData, {
         headers: { authorization: token },
       });
