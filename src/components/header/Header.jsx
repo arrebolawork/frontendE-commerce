@@ -1,25 +1,35 @@
 import { UserContext } from '../../context/UserContext';
 import { useContext, useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './Header.scss';
 import UserMenu from './UserMenu.jsx';
+import { ProductContext } from '../../context/ProductContext.jsx';
 
+const useQuery = () => new URLSearchParams(useLocation().search);
 const Header = () => {
+  const navigate = useNavigate();
   const { cart } = useContext(UserContext);
   const [cartEmpty, setCartEmpty] = useState(!cart || cart.size == 0);
   const [showMenu, setShowMenu] = useState(false);
-
-
+  const { getProductsByName, getAllProducts } = useContext(ProductContext);
+  const query = useQuery();
+  const name = query.get('name');
   useEffect(() => {
     setCartEmpty(!cart || cart.size == 0);
   }, [cart]);
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    if (name) {
+      getProductsByName(name);
+    } else {
+      getAllProducts(); // si no hay búsqueda, traer todos
+    }
+  }, [name]);
 
   const submitSearch = (event) => {
     event.preventDefault();
     const text = event.target.search.value;
-    navigate(`/search?name=${text}`);
+    navigate(`/shop?name=${text}`);
   };
 
   return (
