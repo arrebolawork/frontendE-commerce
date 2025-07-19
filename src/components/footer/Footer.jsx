@@ -8,7 +8,7 @@ const Footer = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/shop">Inicio</Link>
+            <Link to="/">Inicio</Link>
           </li>
           <li>
             <Link to="/">Política de Privacidad</Link>

@@ -7,7 +7,7 @@ const UserMenu = () => {
   let { user, logout } = useContext(UserContext);
   const handleLogout = () => {
     logout();
-    navigate('/home');
+    navigate('/');
   };
   return (
     <div id="user-menu">
