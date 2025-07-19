@@ -4,6 +4,8 @@ import ShopView from './pages/ShopView/ShopView';
 import CartView from './pages/CartView/CartView';
 import LoginForm from './components/login/LoginForm';
 import Header from './components/header/Header.jsx';
+import AdminView from './pages/AdminView/AdminView.jsx';
+import ProductDetails from './components/ProductDetails/ProductDetails.jsx';
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route path="/register" element={<LoginForm />} />
           <Route path="/shop" element={<ShopView />} />
           <Route path="/cart" element={<CartView />} />
+          <Route path="/admin" element={<AdminView />} />
+          <Route path="/product/:productId" element={<ProductDetails />} />
           {/* <Route path='/home' element={<HomeView />} />
           {/* <Route path='/' element={<HomeView />} />
           <Route path='/home' element={<HomeView />} />

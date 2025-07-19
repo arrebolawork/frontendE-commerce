@@ -4,4 +4,5 @@ export const ProductContext = createContext({
   products: [],
   setProducts: () => {},
   getAllProducts: () => {},
+  deleteProduct: () => {},
 });
