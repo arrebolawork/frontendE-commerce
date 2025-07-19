@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { ProductContext } from '../context/ProductContext';
-const API_URL = 'http://localhost:3000';
+import { API_URL } from '../config';
 
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
