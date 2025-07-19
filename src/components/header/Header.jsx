@@ -22,24 +22,24 @@ const Header = () => {
     if (name) {
       getProductsByName(name);
     } else {
-      getAllProducts(); // si no hay búsqueda, traer todos
+      getAllProducts();
     }
   }, [name]);
 
   const submitSearch = (event) => {
     event.preventDefault();
     const text = event.target.search.value;
-    navigate(`/shop?name=${text}`);
+
+    navigate(`/?name=${text}`);
   };
 
   return (
     <header className="header">
       <form className="search-form" onSubmit={submitSearch}>
-        <input type="text" placeholder="Buscar" name="search" />
+        <input type="text" placeholder="Buscar" name="search" defaultValue={name} />
         <button className="search-button" type="submit"></button>
       </form>
-      <Link to="/">Inicio</Link>
-      <Link to="/shop">Tienda</Link>
+      <Link to="/">Tienda</Link>
       <Link to="/cart" className="header-button icon-cart">
         <span className={cartEmpty ? null : 'notification'}></span>
       </Link>

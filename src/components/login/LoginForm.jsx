@@ -18,14 +18,7 @@ export default function LoginForm() {
   const [haveCount, setHaveCount] = useState(true);
   const REGEX = /^[a-zA-Z0-9._%+-ñÑ]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-  const resetForm = () => {
-    setEmail('');
-    setPasswd('');
-    setNombre('');
-    setApellidos('');
-    setCumple('');
-  };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (email.trim() === '' || !REGEX.test(email.trim())) {
@@ -36,13 +29,12 @@ export default function LoginForm() {
     }
 
     if (haveCount) {
-      login(email.trim(), passwd.trim());
-      const storageUser = localStorage.getItem('user');
+      await login(email.trim(), passwd.trim());
+      const storageUser = localStorage.getItem('token');
       if (!storageUser) {
         mostrarMensaje('No estas autorizado', 'error');
-        resetForm();
       } else {
-        navigate('/shop');
+        navigate('/');
       }
     } else {
       if (nombre.trim() === '') return mostrarMensaje('Debes rellenar el nombre', 'error');
@@ -57,7 +49,6 @@ export default function LoginForm() {
       };
       register(newUser);
       mostrarMensaje('Usuario registrado con éxito', 'success');
-      resetForm();
     }
   };
   const handleHaveCount = () => {
