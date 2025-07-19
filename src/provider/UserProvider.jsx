@@ -90,7 +90,6 @@ export const UserProvider = ({ children }) => {
         register,
         fetchProfile,
       }}
-      value={{ user, token, login, logout, cart, addProductToCart, removeProductFromCart, emptyCart }}
     >
       {children}
     </UserContext.Provider>
