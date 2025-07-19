@@ -1,6 +1,6 @@
 .productList {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
     width: 80%;
     margin: 40px auto;
@@ -10,6 +10,7 @@
         border-radius: 10px;
         color: black;
         padding: 10px;
+        position: relative;
     }
 
     .__productInfo {
@@ -18,8 +19,31 @@
         background: rgb(0, 0, 0);
         border-radius: 50px;
         justify-content: space-between;
-        padding: 5px;
+        padding: 3px 3px 3px 15px;
         color: white;
+        width: 80%;
+        margin: auto;
+        font-size: 1.2rem;
+    }
+
+    .__price {
+        background-color: #FF6001;
+        border-radius: 100px;
+        padding: 2px 15px;
+    }
+
+    .addCart {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background-color: #ff5e01;
+        background-image: url("/icons/shoppingcart.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 10px;
+        border: 0;
     }
 
     img {
@@ -27,4 +51,8 @@
         max-width: 320px;
         object-fit: cover;
     }
+}
+
+main {
+    width: 100%;
 }
