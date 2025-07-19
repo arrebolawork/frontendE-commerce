@@ -1,33 +1,33 @@
 .error {
   position: absolute;
-  top: 16px;
+  top: 10px;
   z-index: 1000;
-  right: 200px;
+  right: 50px;
   background-color: rgb(255, 111, 111);
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   display: flex;
   justify-content: center;
 }
 .success {
   position: absolute;
-  top: 16px;
+  top: 10px;
   z-index: 1000;
-  right: 200px;
+  right: 50px;
   background-color: #66bd33;
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   display: flex;
   justify-content: center;
 }
 .info {
   position: absolute;
-  top: 16px;
+  top: 10px;
   z-index: 1000;
-  right: 200px;
+  right: 50px;
   background-color: #58deff;
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   display: flex;
   justify-content: center;
 }

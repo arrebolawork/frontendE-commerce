@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export default function useMensajeUsuario() {
-  const [tipo, setTipo] = useState('error');
+  const [tipo, setTipo] = useState('');
   const [mensaje, setMensaje] = useState('');
   const [visible, setVisible] = useState(false);
 

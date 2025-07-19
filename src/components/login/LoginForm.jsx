@@ -6,7 +6,7 @@ import useMensajeUsuario from '../../hook/useMensajeUsuario';
 import MensajeUsuario from '../Alertas/MensajeUsuario';
 
 export default function LoginForm() {
-  const { visible, mensaje, mostrarMensaje } = useMensajeUsuario();
+  const { visible, mensaje, tipo, mostrarMensaje } = useMensajeUsuario();
   const { login, register } = useContext(UserContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,8 +24,6 @@ export default function LoginForm() {
     setNombre('');
     setApellidos('');
     setCumple('');
-
-    navigate('/shop');
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +37,13 @@ export default function LoginForm() {
 
     if (haveCount) {
       login(email.trim(), passwd.trim());
-      resetForm();
+      const storageUser = localStorage.getItem('user');
+      if (!storageUser) {
+        mostrarMensaje('No estas autorizado', 'error');
+        resetForm();
+      } else {
+        navigate('/shop');
+      }
     } else {
       if (nombre.trim() === '') return mostrarMensaje('Debes rellenar el nombre', 'error');
       if (apellidos.trim() === '') return mostrarMensaje('Deber rellenar los apellidos', 'error');
@@ -52,6 +56,7 @@ export default function LoginForm() {
         birthday: cumple ?? '',
       };
       register(newUser);
+      mostrarMensaje('Usuario registrado con éxito', 'success');
       resetForm();
     }
   };
@@ -67,7 +72,7 @@ export default function LoginForm() {
   }, [location]);
   return (
     <div>
-      {visible && <MensajeUsuario mensaje={mensaje} tipo={'error'} />}
+      {visible && <MensajeUsuario mensaje={mensaje} tipo={tipo} />}
       <form onSubmit={handleSubmit} className="formularioContainer">
         {!haveCount && (
           <>
