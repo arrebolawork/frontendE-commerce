@@ -1,6 +1,5 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext.jsx';
 
 const UserMenu = () => {
@@ -8,7 +7,7 @@ const UserMenu = () => {
   let { user, logout } = useContext(UserContext);
   const handleLogout = () => {
     logout();
-    navigate('/home');
+    navigate('/');
   };
   return (
     <div id="user-menu">

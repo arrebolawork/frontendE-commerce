@@ -1,0 +1,16 @@
+.footer {
+    margin-top: auto;
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 30px;
+        padding: 20px;
+        flex-wrap: wrap;
+
+        a {
+            font-size: 10px;
+            color: #444;
+        }
+    }
+}

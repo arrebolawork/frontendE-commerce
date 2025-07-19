@@ -1,0 +1,103 @@
+  .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+  }
+
+  .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 450px;
+      position: relative;
+  }
+
+  .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      background: none;
+      border: none;
+  }
+
+  .form-group {
+      margin-bottom: 15px;
+  }
+
+  .form-group label {
+      display: block;
+      margin-bottom: 5px;
+  }
+
+  .form-group input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+  }
+
+  .save-button {
+      background-color: #FF6001;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+  }
+
+  .__adminOptions {
+      position: absolute;
+      right: 30px;
+      top: 30px;
+      display: flex;
+      gap: 5px;
+  }
+
+  .btnEdit {
+      width: 50px;
+      height: 50px;
+      background-color: #2727278c;
+      background-image: url("/icons/edit.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 10px;
+      background-size: 30px;
+      cursor: pointer;
+  }
+
+  .btnDelete {
+      width: 50px;
+      height: 50px;
+      background-color: #ff0000a2;
+      background-image: url("/icons/delete.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 10px;
+      background-size: 30px;
+      cursor: pointer;
+  }
+
+  .adminPage {
+      width: 80%;
+  }
+
+  .create-btn{
+    font-size: 1rem;
+    padding: 15px 10px;
+    background-color: #FF6001;
+    float: inline-end;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }

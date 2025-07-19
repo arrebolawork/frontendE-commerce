@@ -9,7 +9,7 @@ import CartProduct from '../../components/CartProduct/CartProduct.jsx';
 import './CartView.scss';
 
 const CartView = () => {
-  const { user, cart, addProductToCart, emptyCart } = useContext(UserContext);
+  const { user, cart, emptyCart } = useContext(UserContext);
   const [products, setProducts] = useState([]);
   const [price, setPrice] = useState(0);
 
@@ -25,7 +25,10 @@ const CartView = () => {
     };
     console.log(body.products);
     axios.post(`${API_URL}/order`, body).then((res) => {
-      navigate('/shop');
+      if (res.status == 201) {
+        emptyCart();
+        navigate('/');
+      }
     });
   };
 
@@ -46,25 +49,34 @@ const CartView = () => {
   return (
     <div className="cartView">
       <div className="cartProducts">
-        {products.map((product) => cart.has(product.id) && <CartProduct product={product} key={product.id} />)}
-      </div>
-      <div className="checkout">
-        <b>Subtotal: {price.toFixed(2)} €</b>
-        {user ? (
-          <>
-            <button className="button" onClick={processPayment}>
-              Pagar
-            </button>
-          </>
+        {cart.size > 0 ? (
+          products.map((product) => cart.has(product.id) && <CartProduct product={product} key={product.id} />)
         ) : (
-          <>
-            <p>Debe iniciar sesión para continuar el proceso de compra</p>
-            <Link to="/login" className="button">
-              Iniciar sesión
-            </Link>
-          </>
+          <div className="emptyCart">
+            <p>El carro está vacío</p>
+            <Link to="/">Volver a la tienda</Link>
+          </div>
         )}
       </div>
+      {cart.size > 0 && (
+        <div className="checkout">
+          <b>Subtotal: {price.toFixed(2)} €</b>
+          {user ? (
+            <>
+              <button className="button" onClick={processPayment}>
+                Pagar
+              </button>
+            </>
+          ) : (
+            <>
+              <p>Debe iniciar sesión para continuar el proceso de compra</p>
+              <Link to="/login" className="button">
+                Iniciar sesión
+              </Link>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 };

@@ -7,9 +7,7 @@ import { API_URL } from '../config';
 export const UserProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
   const [user, setUser] = useState(null);
-  const [cart, setCart] = useState(
-    new Map(JSON.parse(localStorage.getItem('cart')) ?? []),
-  );
+  const [cart, setCart] = useState(new Map(JSON.parse(localStorage.getItem('cart')) ?? []));
 
   const login = async (email, passwd) => {
     try {
@@ -22,13 +20,19 @@ export const UserProvider = ({ children }) => {
       console.error('Error en login:', error.response?.data || error);
     }
   };
-
+  const register = async ({ name, lastName, email, passwd, birthday }) => {
+    try {
+      await axios.post(`${API_URL}/user/register`, { name, lastName, email, passwd, birthday });
+    } catch (error) {
+      console.error('Error en Register:', error.response?.data || error);
+    }
+  };
   const fetchProfile = async (authToken = token) => {
     try {
       const res = await axios.get(`${API_URL}/user/me`, {
         headers: { Authorization: authToken },
       });
-      setUser(res.data);
+      setUser({ ...res.data, role: 'admin' });
     } catch (error) {
       console.error('Error al obtener perfil:', error.response?.data || error);
       logout();
@@ -54,9 +58,9 @@ export const UserProvider = ({ children }) => {
     newCart.delete(productId);
     setCart(newCart);
     localStorage.setItem('cart', JSON.stringify(newCart.entries().toArray()));
-  }
+  };
 
-  const emptyCart = () => {
+ const emptyCart = () => {
     setCart(new Map());
     localStorage.removeItem('cart');
   };
@@ -67,7 +71,18 @@ export const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ user, token, login, logout, cart, addProductToCart, removeProductFromCart, emptyCart }}
+      value={{
+        user,
+        token,
+        login,
+        logout,
+        cart,
+        addProductToCart,
+        removeProductFromCart,
+        emptyCart,
+        register,
+        fetchProfile,
+      }}
     >
       {children}
     </UserContext.Provider>
