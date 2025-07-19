@@ -25,7 +25,7 @@ const CartView = () => {
     };
     console.log(body.products);
     axios.post(`${API_URL}/order`, body).then((res) => {
-      navigate('/shop');
+      navigate('/');
     });
   };
 
