@@ -4,6 +4,10 @@ import ShopView from './pages/ShopView/ShopView';
 import CartView from './pages/CartView/CartView';
 import LoginForm from './components/login/LoginForm';
 import Header from './components/header/Header.jsx';
+import Profile from './components/Profile/Profile.jsx'
+import AdminView from './pages/AdminView/AdminView.jsx'
+import ProductDetails from './components/ProductDetails/ProductDetails.jsx'
+import Footer from './components/footer/Footer.jsx'
 
 function App() {
   return (
