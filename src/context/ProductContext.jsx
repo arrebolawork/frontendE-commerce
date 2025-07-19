@@ -2,7 +2,12 @@ import { createContext } from "react";
 
 export const ProductContext = createContext({
   products: [],
-  setProducts: () => {},
-  getAllProducts: () => {},
-  deleteProduct: () => {},
+  product: {},
+  setProducts: () => { },
+  getAllProducts: () => { },
+  deleteProduct: () => { },
+  updateProduct: () => { },
+  getProductById: () => { },
+  createProduct: () => { },
+
 });
