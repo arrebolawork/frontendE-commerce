@@ -55,3 +55,49 @@
       cursor: pointer;
       width: 100%;
   }
+
+  .__adminOptions {
+      position: absolute;
+      right: 30px;
+      top: 30px;
+      display: flex;
+      gap: 5px;
+  }
+
+  .btnEdit {
+      width: 50px;
+      height: 50px;
+      background-color: #2727278c;
+      background-image: url("/icons/edit.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 10px;
+      background-size: 30px;
+      cursor: pointer;
+  }
+
+  .btnDelete {
+      width: 50px;
+      height: 50px;
+      background-color: #ff0000a2;
+      background-image: url("/icons/delete.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 10px;
+      background-size: 30px;
+      cursor: pointer;
+  }
+
+  .adminPage {
+      width: 80%;
+  }
+
+  .create-btn{
+    font-size: 1rem;
+    padding: 15px 10px;
+    background-color: #FF6001;
+    float: inline-end;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }

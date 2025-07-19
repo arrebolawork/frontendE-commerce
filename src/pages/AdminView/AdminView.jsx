@@ -3,21 +3,21 @@ import { ProductContext } from '../../context/ProductContext'
 import './AdminView.scss'
 
 const AdminView = () => {
-    const { 
-        products, 
-        getAllProducts, 
+    const {
+        products,
+        getAllProducts,
         createProduct,
-        deleteProduct, 
-        updateProduct, 
-        getProductById, 
-        product 
+        deleteProduct,
+        updateProduct,
+        getProductById,
+        product
     } = useContext(ProductContext)
-    
+
     const [isEditModalOpen, setIsEditModalOpen] = useState(false)
     const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
     const [currentProductId, setCurrentProductId] = useState(null)
-    const [formData, setFormData] = useState({ 
-        name: '', 
+    const [formData, setFormData] = useState({
+        name: '',
         price: '',
     })
 
@@ -87,28 +87,27 @@ const AdminView = () => {
     }
 
     return (
-        <>
-            <div>
-                <button 
+        <div className='adminPage'>
+                <button
                     onClick={handleOpenCreateModal}
                     className="create-btn"
                 >
-                    Crear nuevo producto
+                    + Crear producto
                 </button>
-            </div>
-            
+
             <div className="productList">
                 {products?.map(product => (
                     <div className="__product" key={product.id}>
+                        <div className="__adminOptions">
+                            <button className='btnEdit' onClick={() => handleOpenEditModal(product.id)}></button>
+                            <button className='btnDelete' onClick={() => handleDelete(product.id)}></button>
+                        </div>
                         <img src="./movil.png" alt={product.name} />
                         <div className="__productInfo">
                             <p>{product.name}</p>
                             <span>${product.price}</span>
                         </div>
-                        <div className="__adminOptions">
-                            <button onClick={() => handleOpenEditModal(product.id)}>Editar</button>
-                            <button onClick={() => handleDelete(product.id)}>Eliminar</button>
-                        </div>
+
                     </div>
                 ))}
             </div>
@@ -182,7 +181,7 @@ const AdminView = () => {
                     </div>
                 </div>
             )}
-        </>
+        </div>
     )
 }
 
