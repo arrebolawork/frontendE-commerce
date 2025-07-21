@@ -86,7 +86,7 @@ export const ProductProvider = ({ children }) => {
     const createReview = async (reviewData) => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.post(`${API_URL}/reviews`, reviewData, {
+      const res = await axios.post(`${API_URL}/review`, reviewData, {
         headers: { authorization: token },
       });
       
