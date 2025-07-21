@@ -23,7 +23,6 @@
 - **React**
 - **React Router DOM**
 - **SASS**
-- **CSS**
 - **Axios**
 - **useContext**, **useNavigate**, **useLocale**
 
@@ -39,13 +38,13 @@ Antes de comenzar, asegúrate de tener instalado:
 - npm (v6 o superior)
 - Backend funcional (Express + Sequelize + Nodemailer)
 
-> ⚠️ Este proyecto **requiere conexión a un backend** para funcionar correctamente. Asegúrate de tenerlo levantado antes de iniciar el frontend.
+> ⚠️ Este proyecto **requiere conexión al backend** https://github.com/arrebolawork/proyectoBackend para funcionar correctamente. Asegúrate de tenerlo levantado antes de iniciar el frontend.
 
 ### 📦 Instalación
 
 ```bash
 # Clona el repositorio
-git clone https://github.com/tu-usuario/reactshop.git
+git clone https://github.com/arrebolawork/frontendE-commerce reactshop
 cd reactshop
 
 # Instala las dependencias

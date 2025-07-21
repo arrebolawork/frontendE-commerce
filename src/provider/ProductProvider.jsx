@@ -6,6 +6,7 @@ import { API_URL } from '../config';
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState({});
+  const [reviews, setReviews] = useState([]);
 
   const getAllProducts = async () => {
     try {
@@ -82,17 +83,38 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
+    const createReview = async (reviewData) => {
+    try {
+      const token = localStorage.getItem('token');
+      const res = await axios.post(`${API_URL}/review`, reviewData, {
+        headers: { authorization: token },
+      });
+      
+      setReviews(prevReviews => [...prevReviews, res.data.review]);
+      
+      return {
+        message: "Reseña creada exitosamente",
+        review: res.data.review
+      };
+    } catch (error) {
+      console.error('Error creating review:', error);
+      throw error;
+    }
+  };
+
   return (
     <ProductContext.Provider
       value={{
         products,
         product,
+        reviews,
         getAllProducts,
         createProduct,
         deleteProduct,
         updateProduct,
         getProductById,
         getProductsByName,
+        createReview
       }}
     >
       {children}
